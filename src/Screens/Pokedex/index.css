@@ -1,0 +1,10 @@
+.Pokedex.container{
+
+    width: 500px;
+    height: 100%;
+    border: 5px solid rgb(255, 0, 0);
+    border-radius: 20px;
+    margin: 50px auto;
+    padding: 30px;
+    overflow: auto;
+  }

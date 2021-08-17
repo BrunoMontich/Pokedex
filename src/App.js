@@ -1,15 +1,17 @@
 import React from 'react';
-
-import './App.css';
-import SearchBar from './components/SearchBar'
+import Pokedex from './Screens/Pokedex';
 
 
 function App() {
+
+
+  
+
+
+
   return (
-    <div className="container">
-      <h1>Pokedéx</h1>
-      <SearchBar />
-    </div>
+    
+   <Pokedex />
   );
 }
 
