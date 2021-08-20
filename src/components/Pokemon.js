@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import "./Pokemon.css";
 
 const Pokemon = ({ name, id }) => {
@@ -10,12 +12,12 @@ const Pokemon = ({ name, id }) => {
       </span>
 
       <img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-          id + 1
-        }.png`}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
         className="pokemon-img"
       />
-      <input type="button" value="Info" className="pokemon-button"></input>
+      <Link to={`info/${name}`} className="pokemon-button">
+        Info
+      </Link>
     </div>
   );
 };

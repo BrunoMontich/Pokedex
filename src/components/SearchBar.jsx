@@ -2,12 +2,19 @@ import React from 'react';
 import './SearchBar.css'
 
 
-const searchBar = () => {
+const searchBar = ({setSearch}) => {
+
+    
     return (
         <>
             <div className="search-box-container">
-                <input type="text" placeholder="Digite o pokemon" className="search-bar" />
-                <input type="button" value="Procurar" className="search-bar-button" />
+                <input type="search"
+                 placeholder="Digite o pokemon"
+                  className="search-bar"
+                  onChange={(ev)=>{setSearch(ev.target.value)}}
+                  
+                   />
+            
 
             </div>
         </>

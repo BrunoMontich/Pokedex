@@ -6,39 +6,47 @@ import Pokemon from "../../components/Pokemon";
 import SearchBar from "../../components/SearchBar";
 
 function PokeInfo() {
-  const [pokes, setPokes] = useState([
-    {
-      name: "bulbasaur",
-      url: "https://pokeapi.co/api/v2/pokemon/1/",
-    },
-    {
-      name: "ivysaur",
-      url: "https://pokeapi.co/api/v2/pokemon/2/",
-    },
-  ]);
+  const [pokes, setPokes] = useState([]);
 
   useEffect(() => {
     const fetchPokemons = async () => {
       const { data } = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=1000"
+        "https://pokeapi.co/api/v2/pokemon?limit=20"
       );
-      setPokes(data.results);
+      setPokes(
+        data.results.map((poke, id) => ({
+          ...poke,
+          id: id + 1,
+        }))
+      );
     };
     fetchPokemons();
   }, []);
 
+  const [search, setSearch] = useState("");
+
   return (
     <>
       {pokes && (
-        <div className="Pokedex container">
-          <h1>Pokedéx</h1>
-          <SearchBar />
+        <>
+          <SearchBar setSearch={setSearch} />
+
           <div className="pokemon-container">
-            {pokes.map((poke, id) => (
-              <Pokemon name={poke.name} id={id} />
-            ))}
+            {pokes
+              .filter((val) => {
+                if (search === "") {
+                  return val;
+                } else if (
+                  val.name.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((poke) => (
+                <Pokemon name={poke.name} id={poke.id} />
+              ))}
           </div>
-        </div>
+        </>
       )}
     </>
   );
