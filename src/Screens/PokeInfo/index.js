@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 import "./index.css";
+import InfoContent from "../../components/InfoContent";
 
 const PokeInfo = () => {
   const { nome } = useParams();
@@ -23,7 +24,16 @@ const PokeInfo = () => {
     <>
       <div className="pokeinfo-container">
         <h2 className="pokeinfo-name">{nome}</h2>
-        <div>{infoList}</div>
+        <div>
+          <InfoContent
+            abilities={infoList.abilities}
+            // base_experience={details.base_experience}
+            // heights={details.heights}
+            // id={details.id}
+            // moves={details.moves}
+          />
+          ;
+        </div>
       </div>
     </>
   );
