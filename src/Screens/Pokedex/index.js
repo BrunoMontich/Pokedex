@@ -30,21 +30,22 @@ function PokeInfo() {
       {pokes && (
         <>
           <SearchBar setSearch={setSearch} />
-
           <div className="pokemon-container">
-            {pokes
-              .filter((val) => {
-                if (search === "") {
-                  return val;
-                } else if (
-                  val.name.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return val;
-                }
-              })
-              .map((poke) => (
-                <Pokemon name={poke.name} id={poke.id} />
-              ))}
+            <div className="pokemon-list-container">
+              {pokes
+                .filter((val) => {
+                  if (search === "") {
+                    return val;
+                  } else if (
+                    val.name.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return val;
+                  }
+                })
+                .map((poke) => (
+                  <Pokemon name={poke.name} id={poke.id} />
+                ))}
+            </div>
           </div>
         </>
       )}

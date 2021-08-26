@@ -1,24 +1,64 @@
 .pokeinfo-container{
-    margin: 30px;
-    color:rgb(248, 235, 114);
    
-
+    color:rgb(255, 255, 255);
+    border: 1px solid rgb(32, 214, 123);
+    border-radius:10px;
+    background-color:rgba(34, 85, 51, 0.384);
+    display:flex;
+    flex-direction:column;   
+    padding:0px;
 }
 
+
+.pokeinfo-header{
+    width: 100%;    
+    height: 50px;
+    border: 1px solid orange;
+    padding: 0px;
+}
+
+.pokeinfo-main-container{
+    width: 100%;
+    height:80%;
+    display:flex;
+    border: 1px solid rgb(255, 255, 255);
+}
+.pokeinfo-img{
+    width:20%;
+    display:flex;
+    align-self: center;
+    
+}
+.pokeinfo-main{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    border:1px solid black;
+}
 .pokeinfo-name{
     margin-bottom: 30px;  
     text-align: center;
+}
+
+.pokeinfo-left-arrow{
+    width: 10%;
+}
+.pokeinfo-right-arrow{
+    width: 10%;
 }
 
 .pokeinfo-back-button{
     width:50px;
     border: 2px solid;
     height:30px;
-    color:rgb(255, 210, 11)
+    margin: 10px;
+    color:rgb(255, 210, 11);
+    border-radius: 5px;
 }
 
-.pokeinfo-header{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
+
+
+.pokeinfo-footer{
+    height:50px;
+    border: 1px solid pink;
 }
