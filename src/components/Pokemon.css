@@ -4,9 +4,10 @@
     flex-direction:row;
     justify-content: space-between; 
     align-items: center;
-    border:solid rgb(192, 84, 84);
+    border:solid rgb(92, 34, 34);
     border-width: 3px 3px 0px 3px;
     padding:10px;
+    
     
     
 }

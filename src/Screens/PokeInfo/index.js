@@ -5,10 +5,13 @@ import axios from "axios";
 import "./index.css";
 import InfoContent from "../../components/InfoContent";
 
+import{BsArrowReturnLeft} from 'react-icons/bs'
+
+
 const PokeInfo = () => {
   const { nome } = useParams();
 
-  const [infoList, setInfoList] = useState([]);
+  const [infoList, setInfoList] = useState();
 
   useEffect(() => {
     const moreInfo = async () => {
@@ -23,16 +26,28 @@ const PokeInfo = () => {
   return (
     <>
       <div className="pokeinfo-container">
-        <h2 className="pokeinfo-name">{nome}</h2>
+        <div className="pokeinfo-header">
+        <h2 className="pokeinfo-name">
+          {nome.substring(0, 1).toUpperCase() + nome.substring(1)}
+        </h2>
+        <Link to='/'>
+        <BsArrowReturnLeft className="pokeinfo-back-button" />        
+        </Link>
+
+        </div>
+        
         <div>
-          <InfoContent
-            abilities={infoList.abilities}
-            // base_experience={details.base_experience}
-            // heights={details.heights}
-            // id={details.id}
-            // moves={details.moves}
-          />
-          ;
+          {infoList ? (
+            <InfoContent
+              abilities={infoList.abilities}
+              base_experience={infoList.base_experience}
+              height={infoList.height}
+              id={infoList.id}
+              location_area_encounters={infoList.location_area_encounters}
+            />
+          ) : (
+            <span>Loading...</span>
+          )}
         </div>
       </div>
     </>

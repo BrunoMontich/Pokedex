@@ -1,0 +1,45 @@
+.info-content-container{
+    width:100%;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content: space-around; 
+    align-items:flex-start;
+    border:solid rgba(4, 24, 138, 0.74);
+    border-width: 3px 3px 3px 3px;
+    padding:10px;
+    background-color:rgb(187, 181, 161);
+    border-radius: 5px;
+}
+
+.info-content-abilities-title,
+.info-content-exp-title,
+.info-content-height-title,
+.info-content-id-title,
+.info-content-local-title{
+    font-weight: bold;
+    color:rgb(9, 34, 71);
+    margin-left: 20px
+}
+
+.info-content-abilities{
+    margin-left: 5px;
+    color:rgb(13, 78, 5)
+}
+
+.info-content-exp,
+.info-content-height,
+.info-content-id
+{
+    color:rgb(66, 9, 77);
+    margin-left:10px;
+   
+}
+
+.info-content-local{
+    color:rgb(66, 9, 77);
+    margin-left:20px;
+}
+
+
+
