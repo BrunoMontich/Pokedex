@@ -1,19 +1,20 @@
 .pokeinfo-container{
    
     color:rgb(255, 255, 255);
-    border: 1px solid rgb(32, 214, 123);
+    /* border: 1px solid rgb(32, 214, 123); */
     border-radius:10px;
     background-color:rgba(34, 85, 51, 0.384);
     display:flex;
     flex-direction:column;   
     padding:0px;
+    transition:all linear 0.5s;
 }
 
 
 .pokeinfo-header{
     width: 100%;    
     height: 50px;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     padding: 0px;
 }
 
@@ -21,44 +22,72 @@
     width: 100%;
     height:80%;
     display:flex;
-    border: 1px solid rgb(255, 255, 255);
+    /* border: 1px solid rgb(255, 255, 255); */
 }
 .pokeinfo-img{
     width:20%;
     display:flex;
     align-self: center;
+    margin-top:20px;
     
 }
 .pokeinfo-main{
     width:100%;
     display:flex;
     flex-direction:column;
-    border:1px solid black;
+    /* border:1px solid black; */
+    background-color:rgba(0, 0, 0, 0.596);
+    border-radius: 30px;
 }
 .pokeinfo-name{
-    margin-bottom: 30px;  
+    margin-bottom: 30px; 
+    margin-top:16px; 
     text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 22px;
 }
 
-.pokeinfo-left-arrow{
+.pokeinfo-left-arrow-container,.pokeinfo-right-arrow-container{
     width: 10%;
+    display:flex;
+    align-items: center;    
+    justify-content:center;
 }
-.pokeinfo-right-arrow{
-    width: 10%;
+
+.pokeinfo-left-arrow.opacity, .pokeinfo-right-arrow.opacity{
+    stroke-width: 0;
+    
 }
+
+.pokeinfo-left-arrow, .pokeinfo-right-arrow{
+    width:100%;
+    height:50px;
+    stroke-width: 15px;
+    stroke:rgb(255, 255, 255, 0.596);
+    /* border:1px solid rgb(255, 0, 0); */
+    color:rgba(0, 0, 0, 0.596);
+    transition:all ease 0.7s;    
+}
+.pokeinfo-left-arrow:not(.opacity):hover, .pokeinfo-right-arrow:not(.opacity):hover{
+    height:60px;  
+}
+
+
+
+
 
 .pokeinfo-back-button{
     width:50px;
-    border: 2px solid;
-    height:30px;
-    margin: 10px;
-    color:rgb(255, 210, 11);
-    border-radius: 5px;
+    /* border: 2px solid rgb(82, 211, 114); */
+    height:40px;
+    margin: 5px;
+    color:rgba(0, 0, 0, 0.596);
+    
 }
 
 
 
 .pokeinfo-footer{
     height:50px;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 }

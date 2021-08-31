@@ -6,14 +6,19 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <h1 className="title">Pokedéx</h1>
+      <h1
+        className="title"
+        style={{ fontWeight: "bold", fontFamily: "Montserrat" }}
+      >
+        Pokedex
+      </h1>
       <div className="Pokedex container">
         <Router>
           <Switch>
             <Route path="/" exact>
               <Pokedex />
             </Route>
-            <Route path="/info/:nome" exact>
+            <Route path="/info/:id" exact>
               <PokeInfo />
             </Route>
           </Switch>

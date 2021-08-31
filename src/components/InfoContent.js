@@ -1,39 +1,30 @@
 import React from "react";
 import "./InfoContent.css";
 
-const InfoContent = ({
-  abilities,
-  base_experience,
-  height,
-  id,
-  location_area_encounters,
-}) => {
+const InfoContent = ({ stats }) => {
   return (
     <>
       <div className="info-content-container">
-        <div className="info-content-abilities-title">Habilidades:</div>
-        {abilities.map((elm) => (
-          <li className="info-content-abilities">{elm.ability.name}</li>
+        {stats.map((elm) => (
+          <div className="info-content--stats-name-number-container">
+            <div className="info-content-stats-name">
+              {elm.stat.name.includes("-")
+                ? elm.stat.name.split("-")[0].substring(0, 1).toUpperCase() +
+                  elm.stat.name.split("-")[0].substring(1) +
+                  "-" +
+                  elm.stat.name.split("-")[1].substring(0, 1).toUpperCase() +
+                  elm.stat.name.split("-")[1].substring(1)
+                : elm.stat.name.substring(0, 1).toUpperCase() +
+                  elm.stat.name.substring(1)}
+            </div>
+            <div className="info-content-stats-number">{elm.base_stat}</div>
+          </div>
         ))}
-        <div className="info-content-exp-title">
-          Exp Base:
-          <span className="info-content-exp"> {base_experience}</span>
-        </div>
 
-        <div className="info-content-height-title">
-          Altura:
-          <span className="info-content-height"> {height}</span>
-        </div>
-
-        <div className="info-content-id-title">
-          Id:
-          <span className="info-content-id">{id}</span>
-        </div>
-
-        <div className="info-content-local-title">Local:</div>
-        <a className="info-content-local" href={location_area_encounters}>
-          {location_area_encounters}
-        </a>
+        {/* <div className="info-content-stats-number-container">
+          {stats.map((elm) => (
+          ))}
+        </div> */}
       </div>
     </>
   );

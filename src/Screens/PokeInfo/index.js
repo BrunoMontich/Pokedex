@@ -1,38 +1,64 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import analyze from "rgbaster";
 
 import "./index.css";
 import InfoContent from "../../components/InfoContent";
 
-import { BsArrowReturnLeft } from "react-icons/bs";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
+import { IoArrowUndoCircle } from "react-icons/io5";
 
 const PokeInfo = () => {
-  const { nome } = useParams();
   const { id } = useParams();
 
   const [infoList, setInfoList] = useState();
+  const [imgBackground, setImgBackground] = useState();
 
+  const moreInfo = async () => {
+    const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    setInfoList(data);
+    imgResult(data);
+  };
+
+  const imgResult = async (data) => {
+    const result = await analyze(
+      data.sprites.other["official-artwork"].front_default,
+      { ignore: ["rgb(255,255,255)", "rgb(0,0,0)"], scale: 1 }
+    );
+    setImgBackground(result);
+    console.log(result);
+  };
   useEffect(() => {
-    const moreInfo = async () => {
-      const { data } = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${nome}`
-      );
-      setInfoList(data);
-    };
     moreInfo();
-  }, []);
+  }, [id]);
 
   return (
     <>
-      <div className="pokeinfo-container">
+      <div
+        className="pokeinfo-container"
+        style={{
+          backgroundColor: imgBackground ? imgBackground[0].color : "white",
+        }}
+      >
         <div className="pokeinfo-header">
           <Link to="/">
-            <BsArrowReturnLeft className="pokeinfo-back-button" />
+            <IoArrowUndoCircle className="pokeinfo-back-button" />
           </Link>
         </div>
         <div className="pokeinfo-main-container">
-          <div className="pokeinfo-left-arrow"></div>
+          <div className="pokeinfo-left-arrow-container">
+            {id > 1 ? (
+              <Link to={`/info/${id - 1}`}>
+                <IoIosArrowDropleftCircle className="pokeinfo-left-arrow" />
+              </Link>
+            ) : (
+              <IoIosArrowDropleftCircle className="pokeinfo-left-arrow opacity" />
+            )}
+          </div>
           <div className="pokeinfo-main">
             <img
               src={
@@ -45,24 +71,31 @@ const PokeInfo = () => {
               className="pokeinfo-img"
             />
             <h2 className="pokeinfo-name">
-              {nome.substring(0, 1).toUpperCase() + nome.substring(1)}
+              {infoList ? (
+                infoList.name.substring(0, 1).toUpperCase() +
+                infoList.name.substring(1)
+              ) : (
+                <span>Loading...</span>
+              )}
             </h2>
             <div className="pokeinfo-main-stats">
               {infoList ? (
-                <InfoContent
-                  abilities={infoList.abilities}
-                  base_experience={infoList.base_experience}
-                  height={infoList.height}
-                  id={infoList.id}
-                  location_area_encounters={infoList.location_area_encounters}
-                />
+                <InfoContent stats={infoList.stats} />
               ) : (
                 <span>Loading...</span>
               )}
             </div>
           </div>
 
-          <div className="pokeinfo-right-arrow"></div>
+          <div className="pokeinfo-right-arrow-container">
+            {id < 898 ? (
+              <Link to={`/info/${parseInt(id) + 1}`}>
+                <IoIosArrowDroprightCircle className="pokeinfo-right-arrow" />
+              </Link>
+            ) : (
+              <IoIosArrowDroprightCircle className="pokeinfo-right-arrow opacity" />
+            )}
+          </div>
         </div>
         <span className="pokeinfo-footer"></span>
       </div>

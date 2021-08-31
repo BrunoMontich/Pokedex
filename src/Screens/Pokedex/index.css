@@ -1,9 +1,9 @@
 .Pokedex.container{
 
-    width: 800px;
+    width: 700px;
     height: 100%;
-    border: 1px solid rgb(32, 214, 123);
-    border-radius: 20px;
+    border: 1px solid rgb(255, 255, 255, 0.596);
+    border-radius: 30px;
     margin: 50px auto;
     
     overflow: auto;
