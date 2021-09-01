@@ -12,11 +12,17 @@ import {
 } from "react-icons/io";
 import { IoArrowUndoCircle } from "react-icons/io5";
 
+import { useBackground } from "../../Context/background";
+
 const PokeInfo = () => {
   const { id } = useParams();
 
   const [infoList, setInfoList] = useState();
-  const [imgBackground, setImgBackground] = useState();
+  const [background, setBackground] = useBackground();
+
+  useEffect(() => {
+    moreInfo();
+  }, [id]);
 
   const moreInfo = async () => {
     const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -29,19 +35,15 @@ const PokeInfo = () => {
       data.sprites.other["official-artwork"].front_default,
       { ignore: ["rgb(255,255,255)", "rgb(0,0,0)"], scale: 1 }
     );
-    setImgBackground(result);
-    console.log(result);
+    setBackground(result);
   };
-  useEffect(() => {
-    moreInfo();
-  }, [id]);
 
   return (
     <>
       <div
         className="pokeinfo-container"
         style={{
-          backgroundColor: imgBackground ? imgBackground[0].color : "white",
+          backgroundColor: background ? background[0].color : "white",
         }}
       >
         <div className="pokeinfo-header">

@@ -3,7 +3,12 @@ import React, { createContext, useState, useContext } from "react";
 const BackgroundContext = createContext();
 
 export default function BackgroundProvider({ children }) {
-  const [background, setBackground] = useState(rgb(128, 155, 136));
+  const [background, setBackground] = useState([
+    { color: "rgb(128, 155, 136)" },
+    { color: "rgb(128, 155, 136)" },
+    { color: "rgb(128, 155, 136)" },
+    { color: "rgb(128, 155, 136)" },
+  ]);
 
   return (
     <BackgroundContext.Provider value={{ background, setBackground }}>
@@ -15,5 +20,5 @@ export default function BackgroundProvider({ children }) {
 export function useBackground() {
   const context = useContext(BackgroundContext);
   const { background, setBackground } = context;
-  return { background, setBackground };
+  return [background, setBackground];
 }

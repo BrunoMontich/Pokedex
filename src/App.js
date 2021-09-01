@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Pokedex from "./Screens/Pokedex";
 import PokeInfo from "./Screens/PokeInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useBackground } from "./Context/background";
 
 function App() {
+  const [background] = useBackground();
+
+  useEffect(() => {
+    document.querySelector("body").style.backgroundColor = background[3].color;
+  }, [background]);
+
   return (
     <>
       <h1
