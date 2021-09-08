@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useBackground } from "./Context/background";
 
 function App() {
-  const [background] = useBackground();
+  const { background } = useBackground();
 
   useEffect(() => {
     document.querySelector("body").style.backgroundColor = background[3].color;

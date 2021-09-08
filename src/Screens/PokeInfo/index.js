@@ -18,7 +18,7 @@ const PokeInfo = () => {
   const { id } = useParams();
 
   const [infoList, setInfoList] = useState();
-  const [background, setBackground] = useBackground();
+  const { background, setBackground } = useBackground();
 
   useEffect(() => {
     moreInfo();
